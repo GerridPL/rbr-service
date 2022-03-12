@@ -5,10 +5,9 @@ use Illuminate\Support\Facades\Http;
 
 class PostService extends ConnectionService
 {
-    public function getPostsFromApi(): string
+    public function getPostsFromApi()
     {
         $address = $this->getAddress();
-        $response = Http::get("$address/posts");
-        return $response->body();
+        return Http::timeout(10)->acceptJson()->get("$address/posts")->json();
     }
 }

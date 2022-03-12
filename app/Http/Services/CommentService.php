@@ -5,10 +5,9 @@ use Illuminate\Support\Facades\Http;
 
 class CommentService extends ConnectionService
 {
-    public function getCommentsFromApi(): string
+    public function getCommentsFromApi()
     {
         $address = $this->getAddress();
-        $response = Http::get("$address/comments");
-        return $response->body();
+        return Http::timeout(10)->acceptJson()->get("$address/comments")->json();
     }
 }

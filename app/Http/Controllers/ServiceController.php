@@ -9,15 +9,17 @@ use Illuminate\Support\Facades\Http;
 
 class ServiceController extends Controller
 {
-    public function getComments(): string
+    public function getComments()
     {
         $CommentService = new CommentService();
-        return $CommentService->getCommentsFromApi();
+        $comments = ($CommentService->getCommentsFromApi());
+        dd($comments);
+        return view('comments', compact('comments'));
     }
 
-    public function getPosts(): string
+    public function getPosts()
     {
         $PostService = new PostService();
-        return $PostService->getPostsFromApi();
+        dd($PostService->getPostsFromApi());
     }
 }
