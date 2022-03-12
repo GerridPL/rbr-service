@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Faker\Factory;
 use Illuminate\Http\Request;
 use App\Http\Services\CommentService;
 use App\Http\Services\PostService;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Http\Services\ConnectionService;
+use Illuminate\Support\Facades\Http;
 
 class ServiceController extends Controller
 {
@@ -34,5 +37,18 @@ class ServiceController extends Controller
             $posts[] = $post_object;
         }
         return view('posts', compact('posts'));
+    }
+
+    public function addRandomPost()
+    {
+        $faker = Factory::create();
+        $post = [
+            'title' => $faker-> sentence($nbWords = 2, $variableNbWords = true),
+            'content' => $faker -> sentence($nbWords = 10, $variableNbWords = true),
+            'author' => 1
+        ];
+        $connectionService = new ConnectionService();
+        $address = $connectionService->getAddress();
+        $response = Http::accept('application/json')->post("$address/posts", $post);
     }
 }

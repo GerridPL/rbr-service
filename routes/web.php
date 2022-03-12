@@ -23,8 +23,8 @@ Route::name('service.')->prefix('service')->group(function () {
         ->name('getComments');
     Route::get('getPosts', [ServiceController::class, 'getPosts'])
         ->name('getPosts');
+    Route::get('addRandomPost', [ServiceController::class, 'addRandomPost'])
+        ->name('addRandomPost');
 });
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
