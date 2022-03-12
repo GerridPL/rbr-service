@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,6 @@ Route::get('/', function () {
 Route::name('service.')->prefix('service')->group(function () {
     Route::get('getComments', [ServiceController::class, 'getComments'])
         ->name('getComments');
+    Route::get('getPosts', [ServiceController::class, 'getPosts'])
+        ->name('getPosts');
 });

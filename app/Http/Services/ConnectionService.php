@@ -4,7 +4,7 @@ namespace App\Http\Services;
 
 class ConnectionService
 {
-    private $address = 'http://127.0.0.1:8001/api';
+    private $address = 'http://127.0.0.1:8000/api';
 
     /**
      * @return string

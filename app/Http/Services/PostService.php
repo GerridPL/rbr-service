@@ -3,12 +3,12 @@
 namespace App\Http\Services;
 use Illuminate\Support\Facades\Http;
 
-class CommentService extends ConnectionService
+class PostService extends ConnectionService
 {
-    public function getCommentsFromApi(): string
+    public function getPostsFromApi(): string
     {
         $address = $this->getAddress();
-        $response = Http::get("$address/comments");
+        $response = Http::get("$address/posts");
         return $response->body();
     }
 }
