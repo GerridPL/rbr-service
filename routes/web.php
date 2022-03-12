@@ -24,3 +24,7 @@ Route::name('service.')->prefix('service')->group(function () {
     Route::get('getPosts', [ServiceController::class, 'getPosts'])
         ->name('getPosts');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
