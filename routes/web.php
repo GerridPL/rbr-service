@@ -25,6 +25,8 @@ Route::name('service.')->prefix('service')->group(function () {
         ->name('getPosts');
     Route::get('addRandomPost', [ServiceController::class, 'addRandomPost'])
         ->name('addRandomPost');
+    Route::get('addCommentYes', [ServiceController::class, 'addCommentYes'])
+        ->name('addCommentYes');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

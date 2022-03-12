@@ -51,4 +51,28 @@ class ServiceController extends Controller
         $address = $connectionService->getAddress();
         $response = Http::accept('application/json')->post("$address/posts", $post);
     }
+
+    public function addCommentYes()
+    {
+        //Get Posts for pick one of them
+        $PostService = new PostService();
+        $posts = [];
+        $response = $PostService->getPostsFromApi();
+        foreach ($response as $post)
+        {
+            $post_object = new Post($post);
+            $posts[] = $post_object;
+        }
+        $number = array_rand($posts, $num = 1);
+
+        //Create comment, and send json
+        $comment = [
+            'post_id' => $posts[$number]->id,
+            'content' => 'Tak',
+            'author' => 1
+        ];
+        $connectionService = new ConnectionService();
+        $address = $connectionService->getAddress();
+        $response = Http::accept('application/json')->post("$address/comments", $comment);
+    }
 }
