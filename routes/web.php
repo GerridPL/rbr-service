@@ -15,7 +15,7 @@ use App\Http\Controllers\ServiceController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::name('service.')->prefix('service')->group(function () {

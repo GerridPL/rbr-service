@@ -17,7 +17,7 @@
                 <table id="posts_table" class="table">
                     <thead class="table-primary">
                     <tr>
-                        <th class="col-sm-2">Id</th>
+                        <th class="col-sm-1">Id</th>
                         <th class="col-sm-2">Tytuł</th>
                         <th class="col-sm-3">Treść</th>
                         <th class="col-sm-2">Autor</th>
@@ -28,7 +28,7 @@
                     <tbody>
                     @foreach ($posts as $post)
                         <tr>
-                            <td class="col-sm-2">{{ $post->id }}</td>
+                            <td class="col-sm-1">{{ $post->id }}</td>
                             <td class="col-sm-2">{{ $post->title }}</td>
                             <td class="col-sm-3">{{ $post->content }}</td>
                             <td class="col-sm-2">{{ $post->author }}</td>
